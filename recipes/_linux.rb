@@ -43,7 +43,8 @@ when "rhel"
   repo = yum_repository "sensu" do
     description "sensu monitoring"
     repo = node.sensu.use_unstable_repo ? "yum-unstable" : "yum"
-    url "#{node.sensu.yum_repo_url}/#{repo}/el/#{node['platform_version'].to_i}/$basearch/"
+#    url "#{node.sensu.yum_repo_url}/#{repo}/el/#{node['platform_version'].to_i}/$basearch/"
+    url "http://repos.sensuapp.org/yum/el/6/x86_64/"
     action :add
   end
   repo.gpgcheck(false) if repo.respond_to?(:gpgcheck)

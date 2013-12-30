@@ -4,7 +4,8 @@ action :create do
     %w[rabbitmq redis api dashboard]
   )
 
-  config = Sensu::Helpers.data_bag_item("config", true)
+  #config = Sensu::Helpers.data_bag_item("config", true)
+  config = Sensu::Helpers.data_bag_item("ssl", false)
 
   if config
     definitions = Chef::Mixin::DeepMerge.merge(definitions, config.to_hash)
